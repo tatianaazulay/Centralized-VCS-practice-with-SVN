@@ -1,0 +1,131 @@
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop
+$ mkdir assignment7
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop
+$ cd assignment7
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ pwd
+/c/Users/tania/desktop/assignment7
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn checkout https://DESKTOP-H4H5FS4/svn/repo1/assignment7/trunk . --force
+Checked out revision 1.
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn log
+------------------------------------------------------------------------
+r1 | VisualSVN Server | 2020-03-16 07:38:24 -0400 (Mon, 16 Mar 2020) | 1 line
+
+Create project 'assignment7'
+------------------------------------------------------------------------
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn status
+?       Count.java
+?       Makefile
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn --force add .
+A         Count.java
+A         Makefile
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn commit -m"add Makefile and Count.java"
+Adding         Count.java
+Adding         Makefile
+Transmitting file data ..done
+Committing transaction...
+Committed revision 2.
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn status
+M       Count.java
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn --force add .
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn commit -m"added Hello!"
+Sending        Count.java
+Transmitting file data .done
+Committing transaction...
+Committed revision 3.
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn diff -r 2
+Index: Count.java
+===================================================================
+--- Count.java  (revision 2)
++++ Count.java  (working copy)
+@@ -5,5 +5,6 @@
+ {for (i=1; i<=4; i++ )
+ System.out.println(2+" times "+i+" = "+(2*i));
+ }
++System.out.println("Hello!");
+ }
+ }
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn diff -r 3
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn diff -r 1
+Index: Count.java
+===================================================================
+--- Count.java  (nonexistent)
++++ Count.java  (revision 3)
+@@ -0,0 +1,10 @@
++import java.util.*;
++public class Count
++{public static void main(String[] args)
++{int i;
++{for (i=1; i<=4; i++ )
++System.out.println(2+" times "+i+" = "+(2*i));
++}
++System.out.println("Hello!");
++}
++}
+Index: Makefile
+===================================================================
+--- Makefile    (nonexistent)
++++ Makefile    (revision 2)
+@@ -0,0 +1,8 @@
++all:
++       echo "Use 'build' to compile, and 'doit' to run file."
++build:
++       javac Count.java
++doit:
++       java Count
++
++
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ make all
+echo "Use 'build' to compile, and 'doit' to run file."
+Use 'build' to compile, and 'doit' to run file.
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ make build
+javac Count.java
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ make doit
+java Count
+2 times 1 = 2
+2 times 2 = 4
+2 times 3 = 6
+2 times 4 = 8
+Hello!
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn status
+?       Count.class
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$ svn status -u
+?                    Count.class
+Status against revision:      3
+
+tania@DESKTOP-H4H5FS4 MINGW64 ~/desktop/assignment7
+$
